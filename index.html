@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2048</title>
+	<link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div class="game_name">
+			2048
+			</div>
+			<div class="score_box">
+				<div class="now">
+					<span>SCORE</span>
+					<span id="score">0</span>
+				</div>
+				<div class="best">
+					<span>BEST</span>
+					<span id="bestscore"></span>
+				</div>
+			</div>
+			<div class="new_game">
+				<span>Join the number and get to 2048 !</span>
+				<button>New Game</button>
+			</div>
+		</div>
+		<div id="body" class="flex-auto-wrap">
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="grid_cell"></div>
+			<div class="title_container" id="title_container">
+			<!-- <div class="num_cell n2 position-4-3">2</div>
+			<div class="num_cell n2 position-4-2">2</div>
+			<div class="num_cell n2 position-3-4">2</div> -->
+			</div>
+			<div id="game_over">
+				<p>Game over!</p>
+				<button>Try again</button>
+			</div>
+		</div>
+	</div>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
