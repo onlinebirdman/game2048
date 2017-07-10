@@ -48,5 +48,5 @@ window.addEventListener('touchend',function(event){
 });
 window.addEventListener('touchmove', function(event){
 	var e = event||window.event;
-	e.preventDefault()
+	game.stopDefault(e);
 },{passive:false}) 

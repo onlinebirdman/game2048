@@ -31,6 +31,7 @@ var game = {
 				break;
 			}
 		}while(true);
+		this.isOver()
 	},
 	canMoveLeft:function(){//判断是否可以左移
 		for(var row=0;row<4;row++){
@@ -67,11 +68,7 @@ var game = {
 				}
 			};
 			this.isOk();
-			if(!this.isFull()){
-				this.createNum();
-			}else{
-				this.isOver();
-			}
+			this.createNum();
 		}	
 	},
 	getNextCol:function(row,col){
@@ -118,11 +115,7 @@ var game = {
 				}
 			};
 			this.isOk();
-			if(!this.isFull()){
-				this.createNum();
-			}else{
-				this.isOver();
-			}
+			this.createNum();
 		}	
 	},
 	getPreCol:function(row,col){
@@ -169,11 +162,7 @@ var game = {
 				}
 			};
 			this.isOk();
-			if(!this.isFull()){
-				this.createNum();
-			}else{
-				this.isOver();
-			}
+			this.createNum();
 		}	
 	},
 	getPreRow:function(row,col){
@@ -220,11 +209,8 @@ var game = {
 				}
 			};
 			this.isOk();
-			if(!this.isFull()){
-				this.createNum();
-			}
-		}
-		this.isOver();	
+			this.createNum();
+		}	
 	},
 	getNextRow:function(row,col){
 		for(var i=row+1;i<4;i++){
@@ -282,16 +268,6 @@ var game = {
 		}else{
 			return false;
 		}
-	},
-	isFull:function(){
-		for(var row=0; row<4;row++){
-			for(var col=0; col<4;col++){
-				if(this.gameArea[row][col]==0){
-					return false;
-				}
-			}
-		};
-		return true;
 	},
 	stopDefault: function(e){
 		if(e && e.preventDefault){
