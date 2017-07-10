@@ -34,3 +34,15 @@ window.onkeydown=function(event){
 	};
 
 }
+window.addEventListener('touchstart',function(event){
+	var e = event||window.event
+	console.log(e.touches[0].clientX);
+	game.deltaX = e.touches[0].clientX;
+	game.deltaY = e.touches[0].clientY;
+});
+window.addEventListener('touchend',function(event){
+	var e = event||window.event;
+	game.deltaX -= e.changedTouches[0].clientX;
+	game.deltaY -= e.changedTouches[0].clientY;
+	game.touch();
+});

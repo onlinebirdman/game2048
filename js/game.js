@@ -2,6 +2,8 @@ var game = {
 	gameArea:[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
 	score:0,
 	bestscore:0,
+	deltaX:0,
+	deltaY:0,
 	start:function(){
 		var score = document.getElementById('score');
 		score.innerHTML=this.score;
@@ -296,6 +298,23 @@ var game = {
 			e.preventDefault()
 		}else{
 			window.e.returnValue = false;
+		}
+	},
+	touch:function(){
+		var absX = Math.abs(this.deltaX);
+		var absY = Math.abs(this.deltaY);
+		if(absX>absY){
+			if(this.deltaX>0){
+				this.moveLeft();
+			}else if(this.deltaX<0){
+				this.moveRight();
+			}
+		}else if(absX<absY){
+			if(this.deltaY<0){
+				this.moveDown();
+			}else if(this.deltaY>0){
+				this.moveUp();
+			}
 		}
 	}
 }
