@@ -295,7 +295,7 @@ var game = {
 		if(e && e.preventDefault){
 			e.preventDefault()
 		}else{
-			window.event.returnValue = false;
+			window.e.returnValue = false;
 		}
 	}
 }
