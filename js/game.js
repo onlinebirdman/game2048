@@ -5,15 +5,25 @@ var game = {
 	deltaX:0,
 	deltaY:0,
 	start:function(){
-		var score = document.getElementById('score');
-		score.innerHTML=this.score;
+		this.initialize();
+		this.showNow();
+		this.showBest();
+		this.createNum();
+		this.createNum();
+	},
+	initialize:function(){
+		var container = document.getElementById('title_container');
+		var gameOver = document.getElementById('game_over');
 		for(var row=0;row<4;row++){
 			for(var col=0;col<4;col++){
 				this.gameArea[row][col]=0
 			}
+		};
+		container.innerHTML = '';
+		gameOver.style.display='none';
+		if(window.localStorage.bestscore2048!=undefined){
+			this.bestscore=window.localStorage.bestscore2048;
 		}
-		this.createNum();
-		this.createNum();
 	},
 	createNum:function(){//在空白处随机生成数字2或4
 		var oGrid = document.getElementById('title_container');
@@ -240,6 +250,7 @@ var game = {
 		container.appendChild(newNum);
 		this.score+=num;
 		score.innerHTML=this.score;
+		this.isBest();
 	},
 	removeNum:function(row,col){
 		var container = document.getElementById('title_container');
@@ -258,23 +269,35 @@ var game = {
 	isOver:function(){
 		if(!this.canMoveLeft()&&!this.canMoveRight()&&!this.canMoveUp()&&!this.canMoveDown()){
 			var gameOver = document.getElementById('game_over');
-			var best = document.getElementById('bestscore');
+			window.localStorage.bestscore2048=this.bestscore;
 			gameOver.style.display='block';
-			if(this.score>this.bestscore){
-				this.bestscore=this.score;
-				best.innerHTML=this.bestscore;
-			}
 			this.score=0;
 		}else{
 			return false;
 		}
 	},
-	stopDefault: function(e){
+	isBest:function(){
+		var best = document.getElementById('bestscore');
+		if(this.score>this.bestscore){
+				this.bestscore=this.score;
+				best.innerHTML=this.bestscore;
+			}
+	},
+	stopDefault: function(event){
+		var e = event||window.event;
 		if(e && e.preventDefault){
 			e.preventDefault()
 		}else{
 			window.e.returnValue = false;
 		}
+	},
+	showBest:function(){
+		var best = document.getElementById('bestscore');
+		best.innerHTML = this.bestscore;
+	},
+	showNow:function(){
+		var score = document.getElementById('score');
+		score.innerHTML = this.score;
 	},
 	touch:function(){
 		var absX = Math.abs(this.deltaX);

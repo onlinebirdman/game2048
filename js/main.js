@@ -1,21 +1,24 @@
+/*用于跨浏览器绑定事件的函数*/
+addEvent = function(obj,etype,handler) {
+	if(obj.addEventListener){
+		obj.addEventListener(etype,handler,{passive:false})
+	}else if(obj.attachEvent){
+		obj.attachEvent('on'+etype,handler)
+	};
+}
 
-window.onload=function(){
+
+window.onload=function(){	
 	var obtn = document.getElementsByTagName('button');
 	for(var i=0;i<obtn.length;i++){
 		obtn[i].onclick=function(){
-			var container = document.getElementById('title_container');
-			var gameOver = document.getElementById('game_over');
-			container.innerHTML = '';
-			gameOver.style.display='none';
 			game.start();
-
 		}
 	}
-	game.start()
+	game.start();
 }
 window.onkeydown=function(event){
 	var e = event||window.event;
-
 	if(e.keyCode==37) {
 		game.stopDefault(e);
 		game.moveLeft();
@@ -35,18 +38,18 @@ window.onkeydown=function(event){
 
 }
 
-window.addEventListener('touchstart',function(event){
+addEvent(window,'touchstart',function(event){
 	var e = event||window.event
 	game.deltaX = e.touches[0].clientX;
 	game.deltaY = e.touches[0].clientY;
-});
-window.addEventListener('touchend',function(event){
+})
+addEvent(window,'touchend',function(event){
 	var e = event||window.event;
 	game.deltaX -= e.changedTouches[0].clientX;
 	game.deltaY -= e.changedTouches[0].clientY;
 	game.touch();
-});
-window.addEventListener('touchmove', function(event){
+})
+addEvent(window,'touchmove',function(event){
 	var e = event||window.event;
 	game.stopDefault(e);
-},{passive:false}) 
+})
