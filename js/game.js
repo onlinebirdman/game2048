@@ -21,7 +21,7 @@ var game = {
 		};
 		container.innerHTML = '';
 		gameOver.style.display='none';
-		if(window.localStorage.bestscore2048!=undefined){
+		if(window.localStorage.bestscore2048!=null){
 			this.bestscore=window.localStorage.bestscore2048;
 		}
 	},

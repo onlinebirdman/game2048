@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="game_area" bindtouchstart="touchstart" bindtouchend="touchend"catchtouchmove="touchmove" >
+    <view class="title">
+      <view class="playerInfo">
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <view class="player">{{userInfo.nickName}}</view>
+      </view>
+      <view class="score">
+          SCORE 
+        <view class="">
+          {{score}}
+        </view> 
+      </view>
+      <view class="score">
+        BEST
+        <view class="">
+          {{bestscore}}
+        </view> 
+      </view>
+      <button bindtap="start" size="mini" type="primary">New Game</button>
+    </view>
+    <view class="player"></view>
+    <view class="bg_box">
+      <view class="bg_grid n{{item}}" wx:for="{{gameArea[0]}}" wx:key="item">
+        {{item}}
+      </view>
+      <view class="bg_grid n{{item}}" wx:for="{{gameArea[1]}}" wx:key="item">
+        {{item}}
+      </view>
+      <view class="bg_grid n{{item}}" wx:for="{{gameArea[2]}}" wx:key="item">
+        {{item}}
+      </view>
+      <view class="bg_grid n{{item}}" wx:for="{{gameArea[3]}}" wx:key="item">
+        {{item}}
+      </view>
+      <view id="game_over" style="display:{{hidden}}">
+        <text>Game Over!</text>
+        <view class="try_again">
+          <button bindtap="start" size="mini" type="primary">Try Again</button>
+        </view>
+      </view>
+      <view id="game_over" style="display:{{success}}">
+        <text>Congratulations！!</text>
+        <view class="try_again">
+          <button bindtap="goOn" size="mini" type="primary">挑战更高分</button>
+        </view>
+      </view>
+    </view>
+    
+</view>

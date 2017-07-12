@@ -1,0 +1,49 @@
+/* index.wxss */
+.title {
+  display: flex;
+  height:160rpx;
+  position:relative;
+}
+.playerInfo {
+  text-align: center;
+  width:200rpx;
+}
+.title button{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 30rpx
+}
+.playerInfo image {
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 50rpx
+}
+.player {
+  font-size: 28rpx
+}
+.score {
+  background-color: #bbada0;
+  font-size: 28rpx;
+  height: 100rpx;
+  width:100rpx;
+  color: #FFF;
+  text-align: center;
+  line-height: 40rpx;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  padding-top: 10rpx
+}
+#game_over {
+ position:absolute;
+ text-align: center;
+ width: 590rpx;
+ height: 590rpx;
+ background-color: rgba(255,255,255,0.7);
+ line-height: 200rpx;
+ left:0;
+ top:0
+}
+#game_over text{
+  font-size: 50rpx;
+  font-weight: 700;
+}
